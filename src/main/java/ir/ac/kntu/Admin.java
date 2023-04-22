@@ -4,12 +4,13 @@ import java.util.Scanner;
 
 public class Admin {
     private static String username;
-    private static String password;
 
+    private static String password;
     public Admin(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
     public static void adminLogin(){
         String usernameAsk,passwordAsk;
         Scanner scanner = new Scanner(System.in);
@@ -26,6 +27,7 @@ public class Admin {
             goBack();
         }
     }
+
     public static void goBack(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to try again:(y/n) ");
