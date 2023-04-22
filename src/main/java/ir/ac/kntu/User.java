@@ -14,12 +14,6 @@ public class User {
 
     private static ArrayList<User> users = new ArrayList<>();
 
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -36,13 +30,7 @@ public class User {
     }
 
     public static void userMenu() {
-        System.out.println("***********************************");
-        System.out.println("User Menu:");
-        System.out.println("1-Sign in");
-        System.out.println("2-Sign up");
-        System.out.println("3-Back");
-        System.out.println("4-Exit.");
-        System.out.println("***********************************");
+        Menu.userOption();
         int option;
         System.out.print("Please select your choice: ");
         Scanner scanner = new Scanner(System.in);
