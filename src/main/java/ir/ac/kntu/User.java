@@ -196,7 +196,7 @@ public class User {
         option = scanner.nextInt();
         switch (option) {
             case 1:
-                //userProfile(user);
+                userProfile(user);
             case 2:
                 //TODO
             case 3:
@@ -210,6 +210,42 @@ public class User {
                 break;
         }
     }
+
+    public static void userProfile(User user){
+        System.out.println("***********************************");
+        System.out.println("account options:");
+        System.out.println("1-My information");
+        System.out.println("2-Edit information");
+        System.out.println("3-Charge wallet");
+        System.out.println("4-Sign out");
+        System.out.println("***********************************");
+        System.out.print("Please select your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        int userprofile = scanner.nextInt();
+        scanner.close();
+        switch (userprofile) {
+            case 1:
+                System.out.println("Username: "+user.username);
+                System.out.println("Password: "+user.password);
+                System.out.println("Email: "+user.email);
+                System.out.println("Phone number: "+user.phoneNumber);
+                System.exit(0);
+                break;
+            case 2:
+                //TODO
+            case 3:
+                //TODO
+            case 4:
+                //TODO
+            case 5:
+                userMenu();
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
+    }
+
+
 
 
 
