@@ -14,6 +14,12 @@ public class User {
 
     private static ArrayList<User> users = new ArrayList<>();
 
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -30,7 +36,17 @@ public class User {
     }
 
     public static void userMenu() {
-        int option=Menu.userOption();
+        System.out.println("***********************************");
+        System.out.println("User Menu:");
+        System.out.println("1-Sign in");
+        System.out.println("2-Sign up");
+        System.out.println("3-Back");
+        System.out.println("4-Exit.");
+        System.out.println("***********************************");
+        int option;
+        System.out.print("Please select your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        option = scanner.nextInt();
         switch (option) {
             case 1:
                 handleSignIn();
@@ -46,6 +62,7 @@ public class User {
                 System.out.println("Invalid choice!");
                 break;
         }
+        scanner.close();
     }
 
 
@@ -57,9 +74,8 @@ public class User {
         System.out.print("password: ");
         passwordAsk = scanner.next();
         if (checkForSignIN(usernameAsk, passwordAsk)) {
-            System.out.println("go to menu");
-            //TODO
-            System.exit(0);
+            User userSignedIn=saveSignInUser(usernameAsk, passwordAsk);
+            accountOptions(userSignedIn);
         } else {
             System.out.println("user does not exist");
         }
@@ -155,5 +171,45 @@ public class User {
         }
         return false;
     }
+    public static User saveSignInUser(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username.trim()) && user.getPassword().equals(password.trim())) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public static void accountOptions(User user){
+        System.out.println("***********************************");
+        System.out.println("account options:");
+        System.out.println("1-Profile");
+        System.out.println("2-Store");
+        System.out.println("3-Library");
+        System.out.println("4-Friends");
+        System.out.println("5-Sign out");
+        System.out.println("***********************************");
+        int option;
+        System.out.print("Please select your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        option = scanner.nextInt();
+        switch (option) {
+            case 1:
+                //userProfile(user);
+            case 2:
+                //TODO
+            case 3:
+                //TODO
+            case 4:
+                //TODO
+            case 5:
+                userMenu();
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
+    }
+
+
 
 }

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 
 public class Start {
-    public static void adminOrUser() {
+    public static void adminOrUser(){
         int option;
         Scanner scanner = new Scanner(System.in);
         System.out.println("***********************************");
@@ -16,7 +16,7 @@ public class Start {
         System.out.print("Please select your choice: ");
 
         option = scanner.nextInt();
-        switch (option) {
+        switch (option){
             case 1:
                 Admin.adminLogin();
                 break;
