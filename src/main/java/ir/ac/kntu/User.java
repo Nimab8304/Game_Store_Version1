@@ -171,6 +171,7 @@ public class User {
         }
         return false;
     }
+
     public static User saveSignInUser(String username, String password) {
         for (User user : users) {
             if (user.getUsername().equals(username.trim()) && user.getPassword().equals(password.trim())) {
