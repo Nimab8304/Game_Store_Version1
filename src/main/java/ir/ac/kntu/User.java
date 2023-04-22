@@ -30,11 +30,7 @@ public class User {
     }
 
     public static void userMenu() {
-        Menu.userOption();
-        int option;
-        System.out.print("Please select your choice: ");
-        Scanner scanner = new Scanner(System.in);
-        option = scanner.nextInt();
+        int option=Menu.userOption();
         switch (option) {
             case 1:
                 handleSignIn();
@@ -50,7 +46,6 @@ public class User {
                 System.out.println("Invalid choice!");
                 break;
         }
-        scanner.close();
     }
 
 
