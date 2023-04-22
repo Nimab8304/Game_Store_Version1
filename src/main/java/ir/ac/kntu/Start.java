@@ -22,10 +22,10 @@ public class Start {
         while (option != 3) {
             switch (option){
                 case 1:
-                    //Admin.adminLogin();
+                    Admin.adminLogin();
                     break;
                 case 2:
-                    //User.userMenu();
+                    User.userMenu();
                     break;
                 default:
                     System.out.println("Invalid choice!");
