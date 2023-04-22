@@ -12,7 +12,7 @@ public class User {
 
     private String phoneNumber;
 
-    private static ArrayList<User> users=new ArrayList<>();
+    private static ArrayList<User> users = new ArrayList<>();
 
 
     public User(String username, String password) {
@@ -38,9 +38,10 @@ public class User {
     public static void userMenu() {
         System.out.println("***********************************");
         System.out.println("User Menu:");
-        System.out.println("1-sign in");
-        System.out.println("2-sign up");
-        System.out.println("3-Exit.");
+        System.out.println("1-Sign in");
+        System.out.println("2-Sign up");
+        System.out.println("3-Back");
+        System.out.println("4-Exit.");
         System.out.println("***********************************");
         int option;
         System.out.print("Please select your choice: ");
@@ -53,6 +54,10 @@ public class User {
             case 2:
                 handleSignUp();
                 break;
+            case 3:
+                Start.adminOrUser();
+            case 4:
+                System.exit(0);
             default:
                 System.out.println("Invalid choice!");
                 break;
@@ -68,9 +73,7 @@ public class User {
         usernameAsk = scanner.next();
         System.out.print("password: ");
         passwordAsk = scanner.next();
-        //User userask = new User(usernameAsk, passwordAsk);
-        System.out.println(checkForSignIN(usernameAsk,passwordAsk));
-        if (checkForSignIN(usernameAsk,passwordAsk)) {
+        if (checkForSignIN(usernameAsk, passwordAsk)) {
             System.out.println("go to menu");
             //TODO
             System.exit(0);
@@ -92,7 +95,7 @@ public class User {
         System.out.print("phonenumber: ");
         phoneAsk = scanner.next();
         System.out.println("***********************************");
-        if (checkForSignUp(usernameAsk, passwordAsk)) {
+        if (checkForSignUp(usernameAsk, passwordAsk, emailAsk, phoneAsk)) {
             User userask = new User(usernameAsk, passwordAsk, emailAsk, phoneAsk);
             users.add(userask);
             System.out.println("user added successfully");
@@ -123,10 +126,10 @@ public class User {
         scanner.close();
     }
 
-    public static boolean checkForSignUp(String username, String password) {
-        if (users!=null) {
+    public static boolean checkForSignUp(String username, String password, String email, String phoneNumber) {
+        if (users != null) {
             for (User user : users) {
-                if (user.getUsername() == username) {
+                if (user.getUsername().equals(username.trim())) {
                     System.out.println("Username already exist");
                     return false;
                 }
@@ -145,17 +148,25 @@ public class User {
                 System.out.println("Password must have at least one lower case");
                 return false;
             }
-            if (password.length()<8) {
+            if (password.length() < 8) {
                 System.out.println("Password must have at least 8 character");
                 return false;
             }
         }
+        if (!email.matches(".+@gmail[.]{1}com")) {
+            System.out.println("Email form is not acceptable");
+            return false;
+        }
+        if (!phoneNumber.matches("[0-9]+")) {
+            System.out.println("Phonenumber is not acceptable");
+            return false;
+        }
         return true;
     }
 
-    public static boolean checkForSignIN(String username, String password){
-        for (User user:users) {
-            if (user.getUsername().equals(username.trim())&&user.getPassword().equals(password.trim())) {
+    public static boolean checkForSignIN(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username.trim()) && user.getPassword().equals(password.trim())) {
                 return true;
             }
         }
