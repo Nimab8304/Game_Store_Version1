@@ -6,6 +6,7 @@ public class Admin {
     private static String username;
 
     private static String password;
+
     public Admin(String username, String password) {
         this.username = username;
         this.password = password;
