@@ -82,7 +82,7 @@ public class User {
         passwordAsk = scanner.next();
         if (checkForSignIN(usernameAsk, passwordAsk)) {
             User userSignedIn=saveSignInUser(usernameAsk, passwordAsk);
-            userMenu.accountOptions(userSignedIn);
+            UserMenu.accountOptions(userSignedIn);
         } else {
             System.out.println("user does not exist");
         }

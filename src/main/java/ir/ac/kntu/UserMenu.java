@@ -2,7 +2,7 @@ package ir.ac.kntu;
 
 import java.util.Scanner;
 
-public class userMenu {
+public class UserMenu {
     public static void accountOptions(User user){
         System.out.println("***********************************");
         System.out.println("account options:");
@@ -62,6 +62,7 @@ public class userMenu {
                 break;
         }
     }
+
     public static void showInformation(User user){
         System.out.println("Username: "+ user.getUsername());
         System.out.println("Password: "+ user.getPassword());
