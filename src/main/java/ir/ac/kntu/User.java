@@ -12,7 +12,7 @@ public class User {
 
     private String phoneNumber;
 
-    private static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<>();
 
 
     public User(String username, String password) {
@@ -20,8 +20,28 @@ public class User {
         this.password = password;
     }
 
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPhoneNumber() {
@@ -81,7 +101,7 @@ public class User {
         System.out.print("password: ");
         passwordAsk = scanner.next();
         if (checkForSignIN(usernameAsk, passwordAsk)) {
-            User userSignedIn=saveSignInUser(usernameAsk, passwordAsk);
+            User userSignedIn = saveSignInUser(usernameAsk, passwordAsk);
             UserMenu.accountOptions(userSignedIn);
         } else {
             System.out.println("user does not exist");
@@ -101,7 +121,7 @@ public class User {
         System.out.print("phonenumber: ");
         phoneAsk = scanner.next();
         System.out.println("***********************************");
-        if (checkForSignUp(usernameAsk, passwordAsk, emailAsk, phoneAsk)) {
+        if (checkForSignUp(passwordAsk, emailAsk, phoneAsk) && checkUsername(usernameAsk)) {
             User userask = new User(usernameAsk, passwordAsk, emailAsk, phoneAsk);
             users.add(userask);
             System.out.println("user added successfully");
@@ -132,15 +152,7 @@ public class User {
         //scanner.close();
     }
 
-    public static boolean checkForSignUp(String username, String password, String email, String phoneNumber) {
-        if (users != null) {
-            for (User user : users) {
-                if (user.getUsername().equals(username.trim())) {
-                    System.out.println("Username already exist");
-                    return false;
-                }
-            }
-        }
+    public static boolean checkForSignUp(String password, String email, String phoneNumber) {
         if (!password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")) {
             if (!password.matches("(.*)[1-9](.*)")) {
                 System.out.println("Password must have at least one number");
@@ -166,6 +178,18 @@ public class User {
         if (!phoneNumber.matches("[0-9]+")) {
             System.out.println("Phonenumber is not acceptable");
             return false;
+        }
+        return true;
+    }
+
+    public static boolean checkUsername(String username) {
+        if (users != null) {
+            for (User user : users) {
+                if (user.getUsername().equals(username.trim())) {
+                    System.out.println("Username already exist");
+                    return false;
+                }
+            }
         }
         return true;
     }

@@ -50,7 +50,8 @@ public class UserMenu {
                 accountOptions(user);
                 break;
             case 2:
-                //TODO
+                editInformation(user);
+                break;
             case 3:
                 //TODO
             case 4:
@@ -69,4 +70,28 @@ public class UserMenu {
         System.out.println("Email: "+ user.getEmail());
         System.out.println("Phone number: "+ user.getPhoneNumber());
     }
+
+    public static void editInformation(User user){
+        String usernameAsk, passwordAsk, phoneAsk, emailAsk;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("***********************************");
+        System.out.print("Username: ");
+        usernameAsk = scanner.next();
+        System.out.print("password: ");
+        passwordAsk = scanner.next();
+        System.out.print("email: ");
+        emailAsk = scanner.next();
+        System.out.print("phonenumber: ");
+        phoneAsk = scanner.next();
+        System.out.println("***********************************");
+        if (User.checkForSignUp(passwordAsk,emailAsk,phoneAsk)){
+            user.setUsername(usernameAsk);
+            user.setPassword(passwordAsk);
+            user.setEmail(emailAsk);
+            user.setPhoneNumber(phoneAsk);
+            System.out.println("Information has changed successfully :)");
+        }
+        userProfile(user);
+    }
+
 }
