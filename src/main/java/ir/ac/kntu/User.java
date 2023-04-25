@@ -20,6 +20,14 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -62,7 +70,6 @@ public class User {
                 System.out.println("Invalid choice!");
                 break;
         }
-        scanner.close();
     }
 
 
@@ -75,7 +82,7 @@ public class User {
         passwordAsk = scanner.next();
         if (checkForSignIN(usernameAsk, passwordAsk)) {
             User userSignedIn=saveSignInUser(usernameAsk, passwordAsk);
-            accountOptions(userSignedIn);
+            userMenu.accountOptions(userSignedIn);
         } else {
             System.out.println("user does not exist");
         }
@@ -122,7 +129,7 @@ public class User {
                     break;
             }
         }
-        scanner.close();
+        //scanner.close();
     }
 
     public static boolean checkForSignUp(String username, String password, String email, String phoneNumber) {
@@ -180,73 +187,4 @@ public class User {
         }
         return null;
     }
-
-    public static void accountOptions(User user){
-        System.out.println("***********************************");
-        System.out.println("account options:");
-        System.out.println("1-Profile");
-        System.out.println("2-Store");
-        System.out.println("3-Library");
-        System.out.println("4-Friends");
-        System.out.println("5-Sign out");
-        System.out.println("***********************************");
-        int option;
-        System.out.print("Please select your choice: ");
-        Scanner scanner = new Scanner(System.in);
-        option = scanner.nextInt();
-        switch (option) {
-            case 1:
-                userProfile(user);
-            case 2:
-                //TODO
-            case 3:
-                //TODO
-            case 4:
-                //TODO
-            case 5:
-                userMenu();
-            default:
-                System.out.println("Invalid choice!");
-                break;
-        }
-    }
-
-    public static void userProfile(User user){
-        System.out.println("***********************************");
-        System.out.println("account options:");
-        System.out.println("1-My information");
-        System.out.println("2-Edit information");
-        System.out.println("3-Charge wallet");
-        System.out.println("4-Sign out");
-        System.out.println("***********************************");
-        System.out.print("Please select your choice: ");
-        Scanner scanner = new Scanner(System.in);
-        int userprofile = scanner.nextInt();
-        scanner.close();
-        switch (userprofile) {
-            case 1:
-                System.out.println("Username: "+user.username);
-                System.out.println("Password: "+user.password);
-                System.out.println("Email: "+user.email);
-                System.out.println("Phone number: "+user.phoneNumber);
-                System.exit(0);
-                break;
-            case 2:
-                //TODO
-            case 3:
-                //TODO
-            case 4:
-                //TODO
-            case 5:
-                userMenu();
-            default:
-                System.out.println("Invalid choice!");
-                break;
-        }
-    }
-
-
-
-
-
 }
