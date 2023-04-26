@@ -115,7 +115,6 @@ public class UserMenu {
                 break;
             case 2:
                 System.exit(0);
-                break;
             default:
                 System.out.println("Invalid choice!");
                 break;
@@ -123,21 +122,47 @@ public class UserMenu {
     }
 
     public static void showGamesInformations(User user){
+        boolean hasGame=false;
         int i=1;
         Scanner scanner = new Scanner(System.in);
         System.out.println("***********************************");
-        for (Game game:Game.games) {
+        for (Game game:Start.games) {
             System.out.println(i+"-"+game.getName());
             i++;
         }
         System.out.println("***********************************");
         System.out.print("Please select the game you want: ");
         int option= scanner.nextInt();
-        System.out.println("Name: "+Game.games.get(option-1).getName());
-        System.out.println("Description: "+Game.games.get(option-1).getDescription());
-        System.out.println("genres: "+Game.games.get(option-1).getGenres());
-        System.out.println("Price: "+Game.games.get(option-1).getPrice());
-        System.out.println("Rate: "+Game.games.get(option-1).getRate());
+        System.out.println("Name: "+Start.games.get(option-1).getName());
+        System.out.println("Description: "+ Start.games.get(option-1).getDescription());
+        System.out.println("genres: "+Start.games.get(option-1).getGenres());
+        System.out.println("Price: "+Start.games.get(option-1).getPrice());
+        System.out.println("Rate: "+Start.games.get(option-1).getRate());
+        if (!user.usergames.contains(Start.games.get(option-1))) {
+            System.out.println("you can buy this game");
+            addGameToUserAccount(user,Start.games.get(option-1));
+        }else {
+            System.out.println("you already have this game");
+        }
+    }
+
+    public static void addGameToUserAccount(User user,Game game) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Do you want to add this game to your account:(y/n) ");
+        String answer;
+        answer = scanner.next();
+        if (answer.trim().equals("y")) {
+            if (user.getWallet()<game.getPrice()){
+                System.out.println("The account balance is not enough");
+                userProfile(user);
+            }else {
+                user.setWallet(user.getWallet()-game.getPrice());
+                user.usergames.add(game);
+                System.out.println("The game has been added successfully :)");
+            }
+        } else if (answer.trim().equals("n")) {
+            accountOptions(user);
+        }
     }
 
 }

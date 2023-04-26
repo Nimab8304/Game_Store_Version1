@@ -14,7 +14,7 @@ public class User {
 
     private String phoneNumber;
 
-
+    public static ArrayList<Game> usergames=new ArrayList<>();
 
     public User(String username, String password) {
         this.username = username;

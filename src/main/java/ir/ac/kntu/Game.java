@@ -13,7 +13,6 @@ public class Game {
 
     private double rate;
 
-    public static ArrayList<Game> games=new ArrayList<>();
 
     public Game(String name, String description, String genres, double price, double rate) {
         this.name = name;

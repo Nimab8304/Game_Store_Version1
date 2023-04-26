@@ -8,6 +8,8 @@ public class Start {
 
     public static ArrayList<User> users = new ArrayList<>();
 
+    public static ArrayList<Game> games=new ArrayList<>();
+
     public static void adminOrUser(){
         int option;
         Scanner scanner = new Scanner(System.in);
