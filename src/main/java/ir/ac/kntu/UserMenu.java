@@ -99,6 +99,7 @@ public class UserMenu {
         double charge = scanner.nextInt();
         user.setWallet(charge);
     }
+
     public static void handleStore(User user){
         System.out.println("***********************************");
         System.out.println("Store options:");
@@ -107,15 +108,10 @@ public class UserMenu {
         System.out.println("***********************************");
         System.out.print("Please select your choice: ");
         Scanner scanner = new Scanner(System.in);
-        int userprofile = scanner.nextInt();
-        switch (userprofile) {
+        int option= scanner.nextInt();
+        switch (option) {
             case 1:
-                int i=1;
-                for (Game game:Game.games) {
-                    System.out.println(i+"-"+game.getName());
-                    i++;
-                }
-                System.exit(0);
+                showGamesInformations(user);
                 break;
             case 2:
                 System.exit(0);
@@ -124,6 +120,24 @@ public class UserMenu {
                 System.out.println("Invalid choice!");
                 break;
         }
+    }
+
+    public static void showGamesInformations(User user){
+        int i=1;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("***********************************");
+        for (Game game:Game.games) {
+            System.out.println(i+"-"+game.getName());
+            i++;
+        }
+        System.out.println("***********************************");
+        System.out.print("Please select the game you want: ");
+        int option= scanner.nextInt();
+        System.out.println("Name: "+Game.games.get(option-1).getName());
+        System.out.println("Description: "+Game.games.get(option-1).getDescription());
+        System.out.println("genres: "+Game.games.get(option-1).getGenres());
+        System.out.println("Price: "+Game.games.get(option-1).getPrice());
+        System.out.println("Rate: "+Game.games.get(option-1).getRate());
     }
 
 }

@@ -23,6 +23,22 @@ public class Game {
         this.rate = rate;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getRate() {
+        return rate;
+    }
+
     public String getName() {
         return name;
     }
