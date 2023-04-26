@@ -3,7 +3,7 @@ package ir.ac.kntu;
 import java.util.Scanner;
 
 public class UserMenu {
-    public static void accountOptions(User user){
+    public static void accountOptions(User user) {
         System.out.println("***********************************");
         System.out.println("account options:");
         System.out.println("1-Profile");
@@ -33,7 +33,7 @@ public class UserMenu {
         }
     }
 
-    public static void userProfile(User user){
+    public static void userProfile(User user) {
         System.out.println("***********************************");
         System.out.println("account options:");
         System.out.println("1-My information");
@@ -53,25 +53,24 @@ public class UserMenu {
                 editInformation(user);
                 break;
             case 3:
-                //TODO
+                chargeWallet(user);
             case 4:
-                //TODO
-            case 5:
                 User.userMenu();
+                break;
             default:
                 System.out.println("Invalid choice!");
                 break;
         }
     }
 
-    public static void showInformation(User user){
-        System.out.println("Username: "+ user.getUsername());
-        System.out.println("Password: "+ user.getPassword());
-        System.out.println("Email: "+ user.getEmail());
-        System.out.println("Phone number: "+ user.getPhoneNumber());
+    public static void showInformation(User user) {
+        System.out.println("Username: " + user.getUsername());
+        System.out.println("Password: " + user.getPassword());
+        System.out.println("Email: " + user.getEmail());
+        System.out.println("Phone number: " + user.getPhoneNumber());
     }
 
-    public static void editInformation(User user){
+    public static void editInformation(User user) {
         String usernameAsk, passwordAsk, phoneAsk, emailAsk;
         Scanner scanner = new Scanner(System.in);
         System.out.println("***********************************");
@@ -84,7 +83,7 @@ public class UserMenu {
         System.out.print("phonenumber: ");
         phoneAsk = scanner.next();
         System.out.println("***********************************");
-        if (User.checkForSignUp(passwordAsk,emailAsk,phoneAsk)){
+        if (User.checkForSignUp(passwordAsk, emailAsk, phoneAsk)) {
             user.setUsername(usernameAsk);
             user.setPassword(passwordAsk);
             user.setEmail(emailAsk);
@@ -92,6 +91,13 @@ public class UserMenu {
             System.out.println("Information has changed successfully :)");
         }
         userProfile(user);
+    }
+
+    public static void chargeWallet(User user) {
+        System.out.print("How much do you want charge up your account? ");
+        Scanner scanner = new Scanner(System.in);
+        double charge = scanner.nextInt();
+        user.setWallet(charge);
     }
 
 }

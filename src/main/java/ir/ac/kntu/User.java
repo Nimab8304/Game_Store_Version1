@@ -10,6 +10,8 @@ public class User {
 
     private String email;
 
+    private double wallet;
+
     private String phoneNumber;
 
     public static ArrayList<User> users = new ArrayList<>();
@@ -30,6 +32,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
     }
 
     public void setPassword(String password) {
@@ -61,6 +71,7 @@ public class User {
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.wallet = 0;
     }
 
     public static void userMenu() {
