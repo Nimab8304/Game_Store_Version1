@@ -14,16 +14,11 @@ public class User {
 
     private String phoneNumber;
 
-    public static ArrayList<User> users = new ArrayList<>();
 
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public static ArrayList<User> getUsers() {
-        return users;
     }
 
     public String getEmail() {
@@ -134,7 +129,7 @@ public class User {
         System.out.println("***********************************");
         if (checkForSignUp(passwordAsk, emailAsk, phoneAsk) && checkUsername(usernameAsk)) {
             User userask = new User(usernameAsk, passwordAsk, emailAsk, phoneAsk);
-            users.add(userask);
+            Start.users.add(userask);
             System.out.println("user added successfully");
             Admin.goBack();
         } else {
@@ -194,8 +189,8 @@ public class User {
     }
 
     public static boolean checkUsername(String username) {
-        if (users != null) {
-            for (User user : users) {
+        if (Start.users != null) {
+            for (User user : Start.users) {
                 if (user.getUsername().equals(username.trim())) {
                     System.out.println("Username already exist");
                     return false;
@@ -206,7 +201,7 @@ public class User {
     }
 
     public static boolean checkForSignIN(String username, String password) {
-        for (User user : users) {
+        for (User user : Start.users) {
             if (user.getUsername().equals(username.trim()) && user.getPassword().equals(password.trim())) {
                 return true;
             }
@@ -215,7 +210,7 @@ public class User {
     }
 
     public static User saveSignInUser(String username, String password) {
-        for (User user : users) {
+        for (User user : Start.users) {
             if (user.getUsername().equals(username.trim()) && user.getPassword().equals(password.trim())) {
                 return user;
             }

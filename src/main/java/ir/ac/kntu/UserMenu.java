@@ -20,7 +20,7 @@ public class UserMenu {
             case 1:
                 userProfile(user);
             case 2:
-                //TODO
+                handleStore(user);
             case 3:
                 //TODO
             case 4:
@@ -98,6 +98,32 @@ public class UserMenu {
         Scanner scanner = new Scanner(System.in);
         double charge = scanner.nextInt();
         user.setWallet(charge);
+    }
+    public static void handleStore(User user){
+        System.out.println("***********************************");
+        System.out.println("Store options:");
+        System.out.println("1-Show all games");
+        System.out.println("2-Exit");
+        System.out.println("***********************************");
+        System.out.print("Please select your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        int userprofile = scanner.nextInt();
+        switch (userprofile) {
+            case 1:
+                int i=1;
+                for (Game game:Game.games) {
+                    System.out.println(i+"-"+game.getName());
+                    i++;
+                }
+                System.exit(0);
+                break;
+            case 2:
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
     }
 
 }

@@ -1,9 +1,13 @@
 package ir.ac.kntu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Start {
+
+    public static ArrayList<User> users = new ArrayList<>();
+
     public static void adminOrUser(){
         int option;
         Scanner scanner = new Scanner(System.in);
