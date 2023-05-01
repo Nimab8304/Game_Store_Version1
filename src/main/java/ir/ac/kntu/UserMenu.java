@@ -1,5 +1,6 @@
 package ir.ac.kntu;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserMenu {
@@ -98,22 +99,29 @@ public class UserMenu {
         Scanner scanner = new Scanner(System.in);
         double charge = scanner.nextInt();
         user.setWallet(charge);
+        accountOptions(user);
     }
 
-    public static void handleStore(User user){
+    public static void handleStore(User user) {
         System.out.println("***********************************");
         System.out.println("Store options:");
         System.out.println("1-Show all games");
-        System.out.println("2-Exit");
+        System.out.println("2-Search with words");
+        System.out.println("3-Search by price");
+        System.out.println("4-Exit");
         System.out.println("***********************************");
         System.out.print("Please select your choice: ");
         Scanner scanner = new Scanner(System.in);
-        int option= scanner.nextInt();
+        int option = scanner.nextInt();
         switch (option) {
             case 1:
-                showGamesInformations(user);
+                showAllGames(user);
                 break;
             case 2:
+                searchWithWord(user);
+            case 3:
+
+            case 4:
                 System.exit(0);
             default:
                 System.out.println("Invalid choice!");
@@ -121,48 +129,80 @@ public class UserMenu {
         }
     }
 
-    public static void showGamesInformations(User user){
-        boolean hasGame=false;
-        int i=1;
+    public static void showAllGames(User user) {
+        boolean hasGame = false;
+        int i = 1;
         Scanner scanner = new Scanner(System.in);
         System.out.println("***********************************");
-        for (Game game:Start.games) {
-            System.out.println(i+"-"+game.getName());
+        for (Game game : Start.games) {
+            System.out.println(i + "-" + game.getName());
             i++;
         }
         System.out.println("***********************************");
-        System.out.print("Please select the game you want: ");
-        int option= scanner.nextInt();
-        System.out.println("Name: "+Start.games.get(option-1).getName());
-        System.out.println("Description: "+ Start.games.get(option-1).getDescription());
-        System.out.println("genres: "+Start.games.get(option-1).getGenres());
-        System.out.println("Price: "+Start.games.get(option-1).getPrice());
-        System.out.println("Rate: "+Start.games.get(option-1).getRate());
-        if (!user.usergames.contains(Start.games.get(option-1))) {
-            System.out.println("you can buy this game");
-            addGameToUserAccount(user,Start.games.get(option-1));
-        }else {
-            System.out.println("you already have this game");
-        }
+        showGamesInformation(user, Start.games);
     }
 
-    public static void addGameToUserAccount(User user,Game game) {
+    public static void addGameToUserAccount(User user, Game game) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to add this game to your account:(y/n) ");
         String answer;
         answer = scanner.next();
         if (answer.trim().equals("y")) {
-            if (user.getWallet()<game.getPrice()){
+            if (user.getWallet() < game.getPrice()) {
                 System.out.println("The account balance is not enough");
                 userProfile(user);
-            }else {
-                user.setWallet(user.getWallet()-game.getPrice());
+            } else {
+                user.setWallet(user.getWallet() - game.getPrice());
                 user.usergames.add(game);
                 System.out.println("The game has been added successfully :)");
             }
         } else if (answer.trim().equals("n")) {
             accountOptions(user);
         }
+    }
+
+    public static void searchWithWord(User user) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Insert the text you want to search with: ");
+        String answer;
+        int i = 1;
+        ArrayList<Game> sorted = new ArrayList<>();
+        answer = scanner.next();
+        for (Game game : Start.games) {
+            if (game.getName().startsWith(answer)) {
+                sorted.add(game);
+            }
+        }
+        if (sorted.isEmpty()) {
+            System.out.println("No item found :(");
+            handleStore(user);
+        } else {
+            for (Game game : sorted) {
+                System.out.println(i + "-" + game.getName());
+                i++;
+            }
+            System.out.println("***********************************");
+            showGamesInformation(user, sorted);
+        }
+
+    }
+
+    public static void showGamesInformation(User user, ArrayList<Game> game) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Please select the game you want: ");
+        int option = scanner.nextInt();
+        System.out.println("Name: " + game.get(option - 1).getName());
+        System.out.println("Description: " + game.get(option - 1).getDescription());
+        System.out.println("genres: " + game.get(option - 1).getGenres());
+        System.out.println("Price: " + game.get(option - 1).getPrice());
+        System.out.println("Rate: " + game.get(option - 1).getRate());
+        if (!user.usergames.contains(game.get(option - 1))) {
+            System.out.println("you can buy this game");
+            addGameToUserAccount(user, game.get(option - 1));
+        } else {
+            System.out.println("you already have this game");
+        }
+        accountOptions(user);
     }
 
 }
