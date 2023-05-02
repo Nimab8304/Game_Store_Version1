@@ -61,12 +61,12 @@ public class User {
         return username;
     }
 
-    public User(String username, String password, String email, String phoneNumber) {
+    public User(String username, String password, String email, double wallet, String phoneNumber) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.wallet = wallet;
         this.phoneNumber = phoneNumber;
-        this.wallet = 0;
     }
 
     public static void userMenu() {
@@ -128,7 +128,7 @@ public class User {
         phoneAsk = scanner.next();
         System.out.println("***********************************");
         if (checkForSignUp(passwordAsk, emailAsk, phoneAsk) && checkUsername(usernameAsk)) {
-            User userask = new User(usernameAsk, passwordAsk, emailAsk, phoneAsk);
+            User userask = new User(usernameAsk, passwordAsk, emailAsk,0, phoneAsk);
             Start.users.add(userask);
             System.out.println("user added successfully");
             Admin.goBack();

@@ -1,6 +1,7 @@
 package ir.ac.kntu;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
     private String name;
@@ -13,6 +14,9 @@ public class Game {
 
     private double rate;
 
+    public static HashMap<User,String> comments=new HashMap<>();
+
+    public static HashMap<User,Double> rates= new HashMap<>();
 
     public Game(String name, String description, String genres, double price, double rate) {
         this.name = name;
