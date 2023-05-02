@@ -12,9 +12,9 @@ public class Game {
 
     private double price;
 
-    public static HashMap<User, String> comments = new HashMap<>();
+    public HashMap<String, String> comments = new HashMap<>();
 
-    public ArrayList<Double> rates = new ArrayList<>();
+    public HashMap<String,Double> rates = new HashMap<>();
 
 
     public Game(String name, String description, String genres, double price) {

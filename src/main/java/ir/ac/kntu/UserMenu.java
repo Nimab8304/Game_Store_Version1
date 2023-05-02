@@ -288,7 +288,7 @@ public class UserMenu {
     public static double countRates(Game game) {
         double sum = 0;
         if (!game.rates.isEmpty()) {
-            for (double rate : game.rates) {
+            for (double rate : game.rates.values()) {
                 sum += rate;
             }
             return sum / game.rates.size();
@@ -296,13 +296,13 @@ public class UserMenu {
         return sum;
     }
 
-    public static void addRates(double rate, Game game) {
-        game.rates.add(rate);
+    public static void addRates(User user,double rate, Game game) {
+        game.rates.put(user.getUsername(),rate);
     }
 
     public static void rateAndComment(User user, Game game) {
         System.out.println("1-Rate");
-        System.out.println("2-Comment");
+        System.out.println("2-Community");
         System.out.print("Please select your choice: ");
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
@@ -311,7 +311,8 @@ public class UserMenu {
                 handdleRate(user, game);
                 break;
             case 2:
-
+                showComment(user,game);
+                break;
             default:
                 System.out.println("Invalid choice!");
                 break;
@@ -323,7 +324,36 @@ public class UserMenu {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Rate: ");
         rate = scanner.nextDouble();
-        addRates(rate, game);
+        addRates(user,rate, game);
+        accountOptions(user);
+    }
+
+    public static void showComment(User user,Game game){
+        Scanner scanner = new Scanner(System.in);
+        int i=1;
+        if (game.comments.isEmpty()){
+            System.out.println("No comments have been registered");
+            System.out.println("***********************************");
+        }else {
+            for (String writer:game.comments.keySet()){
+                System.out.println(i+"-"+writer+": "+game.comments.get(writer));
+                i++;
+            }
+        }
+        System.out.print("Do you want to add a comment?(y/n) ");
+        String answer= scanner.next();
+        if (answer.trim().equals("y")){
+            addComments(user,game);
+        }else {
+            accountOptions(user);
+        }
+    }
+
+    public static void addComments(User user,Game game){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your comment: ");
+        String comment=scanner.nextLine();
+        game.comments.put(user.getUsername(), comment);
         accountOptions(user);
     }
 }
