@@ -197,7 +197,7 @@ public class UserMenu {
             System.out.println("you can buy this game");
             addGameToUserAccount(user, game.get(option - 1));
         } else {
-            rateAndComment(user,game.get(option - 1));
+            rateAndComment(user, game.get(option - 1));
             accountOptions(user);
         }
         accountOptions(user);
@@ -268,8 +268,8 @@ public class UserMenu {
     }
 
     public static void showUserGamesInformation(User user, ArrayList<Game> game) {
-        int option =showSpecificGameInformation(user, game);
-        rateAndComment(user,game.get(option - 1));
+        int option = showSpecificGameInformation(user, game);
+        rateAndComment(user, game.get(option - 1));
         accountOptions(user);
     }
 
@@ -300,7 +300,7 @@ public class UserMenu {
         game.rates.add(rate);
     }
 
-    public static void rateAndComment(User user,Game game) {
+    public static void rateAndComment(User user, Game game) {
         System.out.println("1-Rate");
         System.out.println("2-Comment");
         System.out.print("Please select your choice: ");
@@ -308,7 +308,7 @@ public class UserMenu {
         int option = scanner.nextInt();
         switch (option) {
             case 1:
-                handdleRate(user,game);
+                handdleRate(user, game);
                 break;
             case 2:
 
@@ -318,12 +318,12 @@ public class UserMenu {
         }
     }
 
-    public static void handdleRate(User user,Game game){
+    public static void handdleRate(User user, Game game) {
         double rate;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Rate: ");
         rate = scanner.nextDouble();
-        addRates(rate,game);
+        addRates(rate, game);
         accountOptions(user);
     }
 }
