@@ -12,19 +12,19 @@ public class Game {
 
     private double price;
 
-    private double rate;
-
     public static HashMap<User,String> comments=new HashMap<>();
 
-    public static HashMap<User,Double> rates= new HashMap<>();
+    public  ArrayList<Double> rates= new ArrayList<>();
 
-    public Game(String name, String description, String genres, double price, double rate) {
+
+
+    public Game(String name, String description, String genres, double price) {
         this.name = name;
         this.description = description;
         this.genres = genres;
         this.price = price;
-        this.rate = rate;
     }
+
 
     public String getDescription() {
         return description;
@@ -36,10 +36,6 @@ public class Game {
 
     public double getPrice() {
         return price;
-    }
-
-    public double getRate() {
-        return rate;
     }
 
     public String getName() {
