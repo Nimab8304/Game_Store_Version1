@@ -267,6 +267,7 @@ public class UserMenu {
         showSpecificGameInformation(user,game);
         accountOptions(user);
     }
+
     public static int showSpecificGameInformation(User user, ArrayList<Game> game) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Please select the game you want: ");
