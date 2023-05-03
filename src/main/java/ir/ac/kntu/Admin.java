@@ -27,6 +27,7 @@ public class Admin {
             System.out.println("Password is wrong");
             goBack();
         }
+        adminMenu();
     }
 
     public static void goBack() {
@@ -38,6 +39,55 @@ public class Admin {
             Start.adminOrUser();
         } else if (answer.trim().equals("n")) {
             System.exit(0);
+        }
+    }
+
+    public static void adminMenu(){
+        System.out.println("***********************************");
+        System.out.println("1-Users");
+        System.out.println("2-Games");
+        System.out.println("3-Back");
+        System.out.println("***********************************");
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Please select your choice: ");
+        int option=scanner.nextInt();
+        switch (option){
+            case 1:
+
+            case 2:
+                handleGameForAdmin();
+            case 3:
+                Start.adminOrUser();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
+    }
+    public static void handleGameForAdmin(){
+        System.out.println("***********************************");
+        System.out.println("1-Add Game");
+        System.out.println("2-Edit Game");
+        System.out.println("3-Remove Game");
+        System.out.println("4-Back");
+        System.out.println("***********************************");
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Please select your choice: ");
+        int option=scanner.nextInt();
+        switch (option){
+            case 1:
+
+            case 2:
+
+            case 3:
+
+                break;
+            case 4:
+                adminMenu();
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
         }
     }
 }
