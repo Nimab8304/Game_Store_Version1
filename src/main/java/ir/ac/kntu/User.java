@@ -16,6 +16,10 @@ public class User {
 
     public static ArrayList<Game> usergames=new ArrayList<>();
 
+    public ArrayList<User> friends=new ArrayList<>();
+
+    public ArrayList<User> request=new ArrayList<>();
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
