@@ -11,6 +11,22 @@ public class Game {
 
     private double price;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public HashMap<String, String> comments = new HashMap<>();
 
     public HashMap<String, Double> rates = new HashMap<>();
