@@ -10,7 +10,7 @@ public class Main {
         Game game = new Game("Snake", "very good", "action", 10);
         Game game1 = new Game("walking dead", "khobe", "Drama", 11);
         Game game2 = new Game("walker", "khob", "Dram", 8);
-        user.friends.add(user1);
+        //user.friends.add(user1);
         Start.games.add(game);
         Start.games.add(game1);
         Start.games.add(game2);
