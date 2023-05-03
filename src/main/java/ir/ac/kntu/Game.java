@@ -1,6 +1,5 @@
 package ir.ac.kntu;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game {
@@ -14,7 +13,7 @@ public class Game {
 
     public HashMap<String, String> comments = new HashMap<>();
 
-    public HashMap<String,Double> rates = new HashMap<>();
+    public HashMap<String, Double> rates = new HashMap<>();
 
 
     public Game(String name, String description, String genres, double price) {

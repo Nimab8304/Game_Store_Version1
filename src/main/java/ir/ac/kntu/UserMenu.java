@@ -296,8 +296,8 @@ public class UserMenu {
         return sum;
     }
 
-    public static void addRates(User user,double rate, Game game) {
-        game.rates.put(user.getUsername(),rate);
+    public static void addRates(User user, double rate, Game game) {
+        game.rates.put(user.getUsername(), rate);
     }
 
     public static void rateAndComment(User user, Game game) {
@@ -311,7 +311,7 @@ public class UserMenu {
                 handdleRate(user, game);
                 break;
             case 2:
-                showComment(user,game);
+                showComment(user, game);
                 break;
             default:
                 System.out.println("Invalid choice!");
@@ -324,40 +324,40 @@ public class UserMenu {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Rate: ");
         rate = scanner.nextDouble();
-        addRates(user,rate, game);
+        addRates(user, rate, game);
         accountOptions(user);
     }
 
-    public static void showComment(User user,Game game){
+    public static void showComment(User user, Game game) {
         Scanner scanner = new Scanner(System.in);
-        int i=1;
-        if (game.comments.isEmpty()){
+        int i = 1;
+        if (game.comments.isEmpty()) {
             System.out.println("No comments have been registered");
             System.out.println("***********************************");
-        }else {
-            for (String writer:game.comments.keySet()){
-                System.out.println(i+"-"+writer+": "+game.comments.get(writer));
+        } else {
+            for (String writer : game.comments.keySet()) {
+                System.out.println(i + "-" + writer + ": " + game.comments.get(writer));
                 i++;
             }
         }
         System.out.print("Do you want to add a comment?(y/n) ");
-        String answer= scanner.next();
-        if (answer.trim().equals("y")){
-            addComments(user,game);
-        }else {
+        String answer = scanner.next();
+        if (answer.trim().equals("y")) {
+            addComments(user, game);
+        } else {
             accountOptions(user);
         }
     }
 
-    public static void addComments(User user,Game game){
+    public static void addComments(User user, Game game) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your comment: ");
-        String comment=scanner.nextLine();
+        String comment = scanner.nextLine();
         game.comments.put(user.getUsername(), comment);
         accountOptions(user);
     }
 
-    public static void handleFriens(User user){
+    public static void handleFriens(User user) {
         System.out.println("***********************************");
         System.out.println("1-My Friends");
         System.out.println("2-Add Friend");
@@ -393,16 +393,16 @@ public class UserMenu {
         }
     }
 
-    public static void showUserFriends(User user){
-        if (user.friends.isEmpty()){
+    public static void showUserFriends(User user) {
+        if (user.friends.isEmpty()) {
             System.out.println("You do not have any friends :(");
             accountOptions(user);
-        }else {
-            showFriendGames(user,user.friends);
+        } else {
+            showFriendGames(user, user.friends);
         }
     }
 
-    public static void showFriendGames(User user,ArrayList<User> friends){
+    public static void showFriendGames(User user, ArrayList<User> friends) {
         int i = 1;
         for (User friend : friends) {
             System.out.println(i + "-" + friend.getUsername());
@@ -412,9 +412,9 @@ public class UserMenu {
         System.out.print("Choose a Friend: ");
         int option = scanner.nextInt();
         i = 1;
-        if (user.friends.get(option-1).usergames.isEmpty()){
+        if (user.friends.get(option - 1).usergames.isEmpty()) {
             System.out.println("Your friend has not bought any game yet! :(");
-        }else {
+        } else {
             System.out.println("******Your Friend's Games******");
             for (Game game : user.friends.get(option - 1).usergames) {
                 System.out.println(i + "-" + game.getName());
@@ -424,7 +424,7 @@ public class UserMenu {
         accountOptions(user);
     }
 
-    public static void searchForFriend(User user){
+    public static void searchForFriend(User user) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Insert the text you want to search with: ");
         String answer;
@@ -440,7 +440,7 @@ public class UserMenu {
             System.out.println("No item found :(");
             accountOptions(user);
         } else {
-            showFriendGames(user,sorted);
+            showFriendGames(user, sorted);
         }
 
     }

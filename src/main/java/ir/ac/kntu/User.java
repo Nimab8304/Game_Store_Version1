@@ -14,11 +14,11 @@ public class User {
 
     private String phoneNumber;
 
-    public static ArrayList<Game> usergames=new ArrayList<>();
+    public static ArrayList<Game> usergames = new ArrayList<>();
 
-    public ArrayList<User> friends=new ArrayList<>();
+    public ArrayList<User> friends = new ArrayList<>();
 
-    public ArrayList<User> request=new ArrayList<>();
+    public ArrayList<User> request = new ArrayList<>();
 
     public User(String username, String password) {
         this.username = username;
@@ -132,7 +132,7 @@ public class User {
         phoneAsk = scanner.next();
         System.out.println("***********************************");
         if (checkForSignUp(passwordAsk, emailAsk, phoneAsk) && checkUsername(usernameAsk)) {
-            User userask = new User(usernameAsk, passwordAsk, emailAsk,0, phoneAsk);
+            User userask = new User(usernameAsk, passwordAsk, emailAsk, 0, phoneAsk);
             Start.users.add(userask);
             System.out.println("user added successfully");
             Admin.goBack();
