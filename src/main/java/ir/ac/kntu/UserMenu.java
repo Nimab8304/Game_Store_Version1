@@ -231,11 +231,12 @@ public class UserMenu {
 
     public static void handleLibrary(User user) {
         System.out.println("***********************************");
-        System.out.println("Store options:");
+        System.out.println("Library options:");
         System.out.println("1-My games");
         System.out.println("2-Search by word");
         System.out.println("3-Search by price");
-        System.out.println("4-Exit");
+        System.out.println("4-Back");
+        System.out.println("5-Exit");
         System.out.println("***********************************");
         System.out.print("Please select your choice: ");
         Scanner scanner = new Scanner(System.in);
@@ -250,6 +251,8 @@ public class UserMenu {
             case 3:
                 searchWithPrice(user, user.usergames);
             case 4:
+                accountOptions(user);
+            case 5:
                 System.exit(0);
             default:
                 System.out.println("Invalid choice!");
@@ -263,7 +266,12 @@ public class UserMenu {
             System.out.println(i + "-" + game.getName());
             i++;
         }
-        showUserGamesInformation(user, user.usergames);
+        if (user.usergames.isEmpty()) {
+            System.out.println("You do not have any games");
+            handleLibrary(user);
+        } else {
+            showUserGamesInformation(user, user.usergames);
+        }
     }
 
     public static void showUserGamesInformation(User user, ArrayList<Game> game) {
