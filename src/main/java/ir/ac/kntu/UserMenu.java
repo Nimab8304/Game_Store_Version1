@@ -91,7 +91,6 @@ public class UserMenu {
             user.setPhoneNumber(phoneAsk);
             System.out.println("Information has changed successfully :)");
         }
-        userProfile(user);
     }
 
     public static void chargeWallet(User user) {

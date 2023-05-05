@@ -36,6 +36,5 @@ public class Start {
                 break;
 
         }
-        scanner.close();
     }
 }
