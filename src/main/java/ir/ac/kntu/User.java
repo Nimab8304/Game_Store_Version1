@@ -14,7 +14,7 @@ public class User {
 
     private String phoneNumber;
 
-    public static ArrayList<Game> usergames = new ArrayList<>();
+    public  ArrayList<Game> usergames = new ArrayList<>();
 
     public ArrayList<User> friends = new ArrayList<>();
 
@@ -145,18 +145,10 @@ public class User {
             System.out.print("Please select your choice: ");
             option = scanner.nextInt();
             switch (option) {
-                case 1:
-                    handleSignUp();
-                    break;
-                case 2:
-                    userMenu();
-                    break;
-                case 3:
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
-                    break;
+                case 1 -> handleSignUp();
+                case 2 -> userMenu();
+                case 3 -> System.exit(0);
+                default -> System.out.println("Invalid choice!");
             }
         }
         //scanner.close();

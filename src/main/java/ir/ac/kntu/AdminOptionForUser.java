@@ -67,13 +67,13 @@ public class AdminOptionForUser {
         int option = scanner.nextInt();
         switch (option) {
             case 1:
-                UserMenu.showInformation(user);
+                UserProfile.showInformation(user);
                 break;
             case 2:
                 Start.users.remove(user);
                 break;
             case 3:
-                UserMenu.editInformation(user);
+                UserProfile.editInformation(user);
                 break;
             case 4:
                 handleUserForAdmin();

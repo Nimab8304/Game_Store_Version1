@@ -16,21 +16,11 @@ public class AdminOptionsForGame {
         System.out.print("Please select your choice: ");
         int option = scanner.nextInt();
         switch (option) {
-            case 1:
-                addGame();
-                break;
-            case 2:
-                findGameToEdit();
-                break;
-            case 3:
-                findGameToRemove();
-                break;
-            case 4:
-                Admin.adminMenu();
-                break;
-            default:
-                System.out.println("Invalid choice!");
-                break;
+            case 1 -> addGame();
+            case 2 -> findGameToEdit();
+            case 3 -> findGameToRemove();
+            case 4 -> Admin.adminMenu();
+            default -> System.out.println("Invalid choice!");
         }
     }
 
@@ -45,7 +35,7 @@ public class AdminOptionsForGame {
         description = scanner.next();
         genre = chooseGenre();
         System.out.print("Price: ");
-        price = scanner.nextDouble();
+        price = scanner.nextFloat();
         System.out.println("***********************************");
         Game newGame=new Game(name,description,genre,price);
         Start.games.add(newGame);
@@ -62,27 +52,34 @@ public class AdminOptionsForGame {
         System.out.print("Please select your choice: ");
         int option = scanner.nextInt();
         switch (option) {
-            case 1:
+            case 1 -> {
                 return "Action";
-            case 2:
+            }
+            case 2 -> {
                 return "Strategy";
-            case 3:
+            }
+            case 3 -> {
                 return "Racing";
-            case 4:
+            }
+            case 4 -> {
                 return "Shooter";
-            case 5:
+            }
+            case 5 -> {
                 return "Sport";
-            case 6:
+            }
+            case 6 -> {
                 return "Simulation";
-            case 7:
+            }
+            case 7 -> {
                 return "Adventure";
-            case 8:
+            }
+            case 8 -> {
                 return "Survival";
-            case 9:
+            }
+            case 9 -> {
                 return "Others";
-            default:
-                System.out.println("Invalid choice!");
-                break;
+            }
+            default -> System.out.println("Invalid choice!");
         }
         return null;
     }
@@ -128,24 +125,12 @@ public class AdminOptionsForGame {
         System.out.print("Please select your choice: ");
         int option = scanner.nextInt();
         switch (option) {
-            case 1:
-                changeName(game);
-                break;
-            case 2:
-                changeDescription(game);
-                break;
-            case 3:
-                changeGenre(game);
-                break;
-            case 4:
-                changePrice(game);
-                break;
-            case 5:
-                Admin.adminMenu();
-                break;
-            default:
-                System.out.println("Invalid choice!");
-                break;
+            case 1 -> changeName(game);
+            case 2 -> changeDescription(game);
+            case 3 -> changeGenre(game);
+            case 4 -> changePrice(game);
+            case 5 -> Admin.adminMenu();
+            default -> System.out.println("Invalid choice!");
         }
     }
 
